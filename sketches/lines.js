@@ -70,6 +70,7 @@ export function lines(p5) {
   p5.setup = () => {
     p5.frameRate(30);
     p5.createCanvas(size, size);
+    p5.strokeWeight(2);
     for (let x = 0; x < size; x += step) {
       leftToRight[x] = [];
       for (let y = 0; y < size; y += step) {
@@ -87,9 +88,8 @@ export function lines(p5) {
   const interval = 60; //segundos rotando
 
   p5.draw = () => {
-    p5.background(0);
-    p5.stroke(255, 0, 191);
-
+    p5.background(253, 250, 254);
+    
     elapsedTime += p5.deltaTime / 1000;
     let rotation = 0;
     if (rotating == true) {
@@ -104,7 +104,6 @@ export function lines(p5) {
       rotating = true;
     }
 
-    p5.strokeWeight(2);
     for (let x = 0; x < size; x += step) {
       for (let y = 0; y < size; y += step) {
         drawLine(x, y, step, step, rotation / interval);
