@@ -4,16 +4,31 @@
  */
 export function clock(p) {
   const size = p.min(p.windowWidth, p.windowHeight) / 2;
+  const state = {
+    steps: 10,
+    speed: 60,
+  };
+
+  let angle = 1.5;
+  let stepSize = size / state.steps;
+
+  /**
+   * @type {import("lil-gui").GUI}
+   */
+  const gui = window.gui.addFolder("clock");
+  gui.add(state, "steps", 5, 300, 1).onChange((steps) => {
+    stepSize = size / steps;
+  });
+  gui.add(state, "speed", 1, 600, 1);
+
+  p.registerMethod("remove", () => {
+    gui.destroy();
+  });
 
   p.setup = () => {
     p.createCanvas(size * 2, size * 2);
     p.colorMode(p.HSB);
   };
-
-  const steps = 10;
-
-  let angle = 1.5;
-  const stepSize = size / steps;
 
   p.draw = () => {
     let colorA = p.color(angle % 360, 90, 100);
@@ -27,10 +42,10 @@ export function clock(p) {
     p.beginShape();
     p.noFill();
 
-    for (let i = 0; i < steps; i++) {
-      let betweenColor = p.lerpColor(colorA, colorB, i / steps);
+    for (let i = 0; i < state.steps; i++) {
+      let betweenColor = p.lerpColor(colorA, colorB, i / state.steps);
       p.stroke(betweenColor);
-      const stAngle = (angle * (i + 1)) / steps;
+      const stAngle = (angle * (i + 1)) / state.steps;
       const r = i * stepSize;
       const co = p.cos(stAngle);
       const si = p.sin(stAngle);
@@ -45,6 +60,6 @@ export function clock(p) {
       p.rotate(-stAngle);
     }
     p.endShape();
-    angle += p.TWO_PI / 60;
+    angle += p.TWO_PI / state.speed;
   };
 }
