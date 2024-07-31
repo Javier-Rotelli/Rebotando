@@ -1,26 +1,3 @@
-const colors = [
-  "30362f",
-  "625834",
-  "a59132",
-  "fffbdb",
-  "da7422",
-  "a1e8af",
-  "d4d2d5",
-  "e3dbdb",
-  "947eb0",
-  "a3a5c3",
-];
-
-const colors2 = [
-  "EE9D8D",
-  "DCA2B5",
-  "ABB1C7",
-  "82BDB5",
-  "8DBE8C",
-  "B9B56B",
-  "E3A570",
-];
-
 export function lines(p5) {
   const size = p5.windowWidth;
   const step = 30;
@@ -89,7 +66,7 @@ export function lines(p5) {
 
   p5.draw = () => {
     p5.background(253, 250, 254);
-    
+
     elapsedTime += p5.deltaTime / 1000;
     let rotation = 0;
     if (rotating == true) {
@@ -109,10 +86,5 @@ export function lines(p5) {
         drawLine(x, y, step, step, rotation / interval);
       }
     }
-  };
-
-  p5.mousePressed = () => {
-    let fs = p5.fullscreen();
-    p5.fullscreen(!fs);
   };
 }
