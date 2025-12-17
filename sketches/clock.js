@@ -3,14 +3,14 @@
  * @param {import("p5").p5InstanceExtensions} p
  */
 export function clock(p) {
-  const size = p.min(p.windowWidth, p.windowHeight) / 2;
+  let size = 1280;
   const state = {
     steps: 10,
     speed: 60,
   };
 
   let angle = 1.5;
-  let stepSize = size / state.steps;
+  let stepSize = 20;
 
   /**
    * @type {import("lil-gui").GUI}
@@ -26,6 +26,8 @@ export function clock(p) {
   });
 
   p.setup = () => {
+    size = p.min(p.windowWidth, p.windowHeight) / 2;
+    stepSize = size / state.steps;
     p.createCanvas(size * 2, size * 2);
     p.colorMode(p.HSB);
   };

@@ -3,16 +3,18 @@
  * @param {import("p5").p5InstanceExtensions} p
  */
 export function clock2(p) {
-  const size = p.min(p.windowWidth, p.windowHeight) / 2;
+  let size = 1280;
+  const steps = 20;
+
+  let stepSize = 20;
 
   p.setup = () => {
+    size = p.min(p.windowWidth, p.windowHeight) / 2;
+    stepSize = size / steps;
     p.createCanvas(p.windowWidth, size * 2);
     p.noStroke();
   };
 
-  const steps = 20;
-
-  const stepSize = size / steps;
   let angle = 0;
 
   p.draw = () => {

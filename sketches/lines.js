@@ -3,7 +3,6 @@
  * @param {import("p5").p5InstanceExtensions} p5
  */
 export function lines(p5) {
-  const size = p5.windowWidth;
   const step = 30;
   const leftToRight = [];
 
@@ -48,7 +47,9 @@ export function lines(p5) {
 
   const speeds = [1, 2, 4, 8];
 
+  let size = 1280;
   p5.setup = () => {
+    size = p5.windowWidth;
     p5.frameRate(30);
     p5.createCanvas(size, size);
     p5.strokeWeight(4);

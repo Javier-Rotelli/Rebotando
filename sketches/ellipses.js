@@ -4,7 +4,6 @@
  */
 export function ellipses(p) {
   const size = p.min(p.windowWidth, p.windowHeight);
-
   const state = {
     n: 10,
     alpha: false,
