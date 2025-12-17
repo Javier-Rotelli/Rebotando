@@ -6,7 +6,7 @@ import { lines } from "./sketches/lines";
 import { clock } from "./sketches/clock";
 import { clock2 } from "./sketches/clock2";
 import { ellipses } from "./sketches/ellipses";
-import { hypnotic } from "./sketches/hypnotic";
+//import { hypnotic } from "./sketches/hypnotic";
 
 const gui = new GUI({ title: "" });
 gui.close();
@@ -17,7 +17,7 @@ const state = {
 };
 
 gui
-  .add(state, "sketch", { lines, clock, clock2, hypnotic, ellipses })
+  .add(state, "sketch", { lines, clock, clock2, ellipses })
   .onChange((value) => {
     currentSketch.remove();
     currentSketch = new p5(value);

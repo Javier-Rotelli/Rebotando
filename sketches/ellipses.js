@@ -9,7 +9,7 @@ export function ellipses(p) {
     n: 10,
     alpha: false,
     colorA: [218, 165, 32],
-    colorB: [72, 61, 139],
+    colorB: [151, 28, 118],
   };
 
   /**

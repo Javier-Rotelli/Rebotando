@@ -51,8 +51,7 @@ export function lines(p5) {
   p5.setup = () => {
     p5.frameRate(30);
     p5.createCanvas(size, size);
-    p5.strokeWeight(4);
-    //p5.strokeCap(p5.PROJECT);
+    p5.strokeWeight(2);
     for (let x = 0; x < size; x += step) {
       leftToRight[x] = [];
       for (let y = 0; y < size; y += step) {
