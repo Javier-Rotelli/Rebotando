@@ -11,6 +11,10 @@ const colors = [
   "a3a5c3",
 ];
 
+/**
+ *
+ * @param {import("p5").p5InstanceExtensions} p5
+ */
 export function hypnotic(p5) {
   let size = 100;
   const finalSize = 10;
@@ -28,6 +32,8 @@ export function hypnotic(p5) {
   };
 
   const draw = (x, y, width, height, xMovement, yMovement, steps) => {
+    p5.randomSeed(99);
+
     p5.stroke("#" + colors[Math.floor(p5.noise(x, y) * colors.length)]);
     p5.rect(x, y, width, height);
 
@@ -45,11 +51,11 @@ export function hypnotic(p5) {
   p5.draw = () => {
     for (let x = offset; x < size - offset; x += tileStep) {
       for (let y = offset; y < size - offset; y += tileStep) {
-        startSteps = 2 + Math.ceil(Math.random() * 3);
+        startSteps = 2 + Math.ceil(p5.random() * 3);
         const xDirection =
-          directions[Math.floor(Math.random() * directions.length)];
+          directions[Math.floor(p5.random() * directions.length)];
         const yDirection =
-          directions[Math.floor(Math.random() * directions.length)];
+          directions[Math.floor(p5.random() * directions.length)];
         draw(
           x,
           y,
